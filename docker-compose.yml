@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+ wapphub:
+  image: dotnet-wapphub-image:1.1.0
+  environment:
+   ASPNETCORE_URLS: "https://*:5051"
+   ConnectionStrings__DelayDbConnection: "Host=RBRETAILTDB0015.test.rus.socgen;Port=5432;Database=recoverylanding;Username=dig_not_prod_usr;Password=P2xACi+x"
+   ConnectionStrings__DelayFilesConnection: "Data Source=10.45.0.29;initial catalog=Delay_temp;persist security info=True;user id=BatchUser;password=cxzdsaewq321;multipleactiveresultsets=True;Encrypt=False;application name=SupportModuleV6"
+   ConnectionStrings__ReportDbConnection: "Data Source=10.46.64.204;Initial Catalog=DRPZ_ReportsDB;User ID=drpz_af;Pwd=Katya_The_BEST_123;Encrypt=False;"
+   ConnectionStrings__SgMartDbConnection: "Data Source=10.46.64.204;Initial Catalog=SG_MART;User ID=drpz_report;Pwd=DRPZReport!2019;Encrypt=False;"
+   ConnectionStrings__PartnersDbConnection: "Data Source=10.46.64.204;Initial Catalog=PARTNERS;User ID=drpz_report;Pwd=DRPZReport!2019;Encrypt=False;"
+   ConnectionStrings__RosbankDRPZConnection: "Data Source=10.46.66.95;initial catalog=Rosbank_DRPZ;User Id=Rosbank_DRPZ;Pwd=Yjdsqgfhjkm1;Encrypt=False;"
+   
+   Serilog__MinimumLevel_Default: "Error"
+  
+  restart: on-failure
+  ports:
+   - "1982:5051"
+  volumes:
+   - ./https:/wwwroot
